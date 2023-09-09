@@ -26,7 +26,7 @@ class Yolov8DetectionModel(DetectionModel):
         from ultralytics import YOLO
 
         try:
-            model = YOLO(self.model_path)
+            model = YOLO(self.config_path).load(self.model_path)  #add config_path
             model.to(self.device)
             self.set_model(model)
         except Exception as e:
